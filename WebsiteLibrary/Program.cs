@@ -10,6 +10,7 @@ namespace WebsiteLibrary
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello, World!");
         }
     }
 }
