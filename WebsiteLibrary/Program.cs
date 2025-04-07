@@ -16,11 +16,10 @@ namespace WebsiteLibrary
 
     internal class Program
     {
+        static List<Website> websites = new List<Website>(); // Moved the list and main argument method to this line 
         static void Main(string[] args)
         {
-            static List<Website> websites = new List<Website>(); // IDK why this is red
-
-            static void Main(string[] args) // Not being used yet
+            
             {
                 bool running = true;
 
@@ -39,7 +38,7 @@ namespace WebsiteLibrary
                     switch (input)
                     {
                         case "1":
-                            AddWebsite(); // Need to add all these functions later. That's why they are red
+                            AddWebsite(); // Added this Function
                             break;
                         case "2":
                             ViewWebsites();
@@ -63,4 +62,39 @@ namespace WebsiteLibrary
 
         }
     }
-}
+
+    static void AddWebsite()
+        {
+            Console.Write("Enter website name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter website link: ");
+            string link = Console.ReadLine();
+
+            Console.Write("Enter website description: ");
+            string description = Console.ReadLine();
+
+            int rating;
+            while (true)
+            {
+                Console.Write("Enter website rating (1–10): ");
+                if (int.TryParse(Console.ReadLine(), out rating) && rating >= 1 && rating <= 10)
+                {
+                    break;
+                }
+                Console.WriteLine("Please enter a number from 1 to 10.");
+            }
+
+            Website newSite = new Website
+            {
+                Name = name,
+                Link = link,
+                Description = description,
+                Rating = rating
+            };
+
+            websites.Add(newSite);
+            Console.WriteLine("Website added");
+        }
+
+    }
